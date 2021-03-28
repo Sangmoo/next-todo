@@ -14,6 +14,36 @@ const Container = styled.div`
         margin-left: 12px;
     }
 
+    .todo-list {
+        .todo-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            height: 52px;
+            border-bottom: 1px solid ${palette.gray};
+
+            .todo-left-side {
+                width: 100%;
+                height: 100%;
+                display: flex;
+                align-items: center;
+                .todo-color-block {
+                    width: 12px;
+                    height: 100px;
+                }
+                .checked-todo-text {
+                    color: ${palette.gray};
+                    text-decoration: line-through;
+                }
+                .todo-text {
+                    margin-left: 12px;
+                    font-size: 16px;
+                }
+            }
+        }
+    }
+
     .todo-list-header {
         padding: 12px;
         position: relative;
@@ -44,6 +74,20 @@ const Container = styled.div`
                 height: 16px;
                 border-radius: 50%;
             }
+        }
+    }
+
+    .todo-right-side {
+        display: flex;
+        margin-right: 12px;
+
+        .todo-button {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            border: 1px solid ${palette.gray};
+            background-color: transparent;
+            outline: none;
         }
     }
 
@@ -158,6 +202,24 @@ const TodoList: React.FC<IProps> = ({ todos }) => {
                     ))}
                 </div>
             </div>
+
+            <ul className="todo-list">
+                {todos.map((todo) => (
+                    <li className="todo-item" key={todo.id}>
+                        <div className="todo-left-side">
+                            <div className={`todo-color-block bg-${todo.color}`} />
+                            <p className={`todo-text ${todo.checked ? "checked-todo-text" : ""}`}>
+                                {todo.text}
+                            </p>
+                        </div>
+                        <div className="todo-right-side">
+                            {!todo.checked && (
+                                <button type="button" className="todo-button" onClick={() => {}}/>
+                            )}
+                        </div>
+                    </li>
+                ))}
+            </ul>
         </Container>
     )
     
