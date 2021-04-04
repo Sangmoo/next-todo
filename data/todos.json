@@ -1,0 +1,8 @@
+[
+    { "id": 1, "text": "인터넷 강의 보기", "color": "red", "checked": false },
+    { "id": 2, "text": "쿠팡에서 장보기", "color": "blue", "checked": true },
+    { "id": 3, "text": "넥스트 공부", "color": "yellow", "checked": false },
+    { "id": 4, "text": "옷 정리하기", "color": "green", "checked": false },
+    { "id": 5, "text": "저녁 요리하기", "color": "orange", "checked": false },
+    { "id": 6, "text": "유튜브 보기", "color": "navy", "checked": true }
+]

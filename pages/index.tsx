@@ -1,8 +1,9 @@
 import React from "react"
-import { NextPage } from "next"
-import styled from "styled-components"
+import Axios from "axios";
+import { GetServerSideProps, NextPage } from "next";
 import TodoList from "../components/TodoList"
 import { TodoType } from "../types/todo";
+import { getTodosAPI } from "../lib/api/todo";
 
 const todos: TodoType[] = [
     { id: 1, text: "인터넷 강의 보기", color: "red", checked: false },
@@ -17,6 +18,17 @@ const app: NextPage = () => {
     // TodoList의 TodoType의 Type 지정
     // TodoList의 todos 전달
     return <TodoList todos={todos}/>
+}
+
+export const getServerSideProps: GetServerSideProps = async () => {
+    try {
+        const { data } = await getTodosAPI();
+        console.log(data);
+        return { props: {}}
+    } catch (e) {
+        console.log(e);
+        return { props: {}}
+    }
 }
 
 export default app;
